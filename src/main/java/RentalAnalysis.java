@@ -37,19 +37,15 @@ public class RentalAnalysis {
 	}
 	
 	public static double totalRev(String car) {
-		double monthlyRevenue = 0;
-		int rentalDuration = 0;
-		double totalRev;
-		String r = "" ;
-		if(r.equals("Honda Fit")){
-			totalRev = monthlyRevenue * rentalDuration;
-			totalRev = + totalRev;
+		ArrayList<RentalRecord> r = createRecords();
+		double totalRev = 0;
+		
+		for (int i = 0; i < r.size(); i++){
+			if (r.get(i).getCarType().equals(car)){
+				totalRev += r.get(i).getMonthlyRevenue();
+			}
 		}
-		else{
-			totalRev = monthlyRevenue * rentalDuration;
-			totalRev = + totalRev;
-		}
+		
 		return totalRev;
-	
 	}
 }
