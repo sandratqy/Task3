@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class RentalAnalysis {
 	
-	public ArrayList<RentalRecord> createRecords() {
+	public static ArrayList<RentalRecord> createRecords() {
 		ArrayList<RentalRecord> r = new ArrayList<RentalRecord>();
 		r.add(new RentalRecord("Honda Fit", "Jul", 1543.75, 25));
 		r.add(new RentalRecord("Honda Fit", "Aug", 1235.00, 20));
@@ -20,23 +20,23 @@ public class RentalAnalysis {
 		return r;
 	}
 	
-	public static double aveMonthlyRentalDur() {
-		double monthlyRevenue = 0;
-		int rentalDuration = 0;
-		double aveMonthlyRentalDur;
-		String r = "" ;
-		if(r.equals("Honda Fit")){
-			aveMonthlyRentalDur = monthlyRevenue / rentalDuration;
-			aveMonthlyRentalDur = + aveMonthlyRentalDur;
+	public static double aveMonthlyRentalDur(String car) {
+		
+		ArrayList<RentalRecord> r = createRecords();
+		int aveMonthlyRentalDur = 0;
+		int j = 0;
+		
+		for (int i = 0; i < r.size(); i++){
+			if (r.get(i).getCarType().equals(car)){
+				aveMonthlyRentalDur += r.get(i).getRentalDuration();
+				j++;
+			}
 		}
-		else{
-			aveMonthlyRentalDur = monthlyRevenue / rentalDuration;
-			aveMonthlyRentalDur = + aveMonthlyRentalDur;
-		}
-		return aveMonthlyRentalDur;
+		
+		return (double) (aveMonthlyRentalDur / j);
 	}
 	
-	public static double totalRev() {
+	public static double totalRev(String car) {
 		double monthlyRevenue = 0;
 		int rentalDuration = 0;
 		double totalRev;
